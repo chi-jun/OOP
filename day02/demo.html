@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <script>
+        /*
+                    面向对象：
+                        万物皆可对象，所以说一个构造函数就是一个面向对象
+                */
+        Date.prototype.format = function() {
+            console.log('666');
+        }
+        var _date1 = new Date();
+        _date1.format();
+        var _date2 = new Date();
+        _date2.format()
+
+        /*==========================================*/
+        function A() {
+            this.numA = 0;
+        }
+
+        function B() {
+            this.numB = 1;
+            this.numc = 2;
+        }
+
+        B.prototype = new A();
+        var _b = new B();
+        A.prototype = new B();
+        var _a = new A();
+
+        console.log('_b.numA:' + _b.numc + ',' + '_a.numm:' + _a.numB);
+        /*============================================*/
+        function D() {
+            this.age = 22;
+        }
+        D.prototype.name = 'lemon'; //相当于往D()里添加东西
+        D.prototype.data = {
+            name: 'laoxie',
+            age: 18
+        }
+        var _d1 = new D();
+        _d1.name = 'Sam';
+        _d1.age = 19;
+        _d1.data.name = 'Tom';
+
+        var _d2 = new D();
+        console.log('_d1.data.name：' + _d1.data.name + '&&_d2.data.name' + _d2.data.name); //_d1.data.name：Tom&&_d2.data.nameTom
+    </script>
+</body>
+
+</html>

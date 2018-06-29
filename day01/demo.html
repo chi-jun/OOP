@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小狗觅食</title>
+    <script>
+        //面向过程
+        function semll() {
+            console.log('闻一闻');
+        }
+
+        function lick() {
+            console.log('舔一舔');
+        }
+
+        function bite() {
+            console.log('咬一咬');
+        }
+
+        semll();
+        lick();
+        bite();
+
+        // 面向对象
+        // 1) 有对象：创建对象
+        // 		* 描述对象：给对象添加属性/方法
+        // 2）指挥对象做事情
+
+        // 主角：我（指挥官）
+
+        var conduct = {
+            semll() {
+                console.log('闻一闻');
+            },
+            lick() {
+                console.log('舔一舔');
+
+            },
+            bite() {
+                console.log('咬一咬');
+            }
+        }
+        console.log(conduct);
+        conduct.semll()
+        conduct.lick();
+        conduct.bite();
+
+        function Person(name, age, gender) {
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+
+        }
+
+        Person.prototype.say = function() {
+                console.log(this.name, this.age, this.gender);
+            }
+            //console.log(_person.say());------ Cannot read property 'say' of undefined
+        var _person = new Person('lemon', 32, "女");
+        console.log(_person.say()); //lemon 32 女
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

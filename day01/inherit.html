@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>继承</h2>
+
+    <script>
+        /*
+         *计算各种等级的员工的工资
+         */
+
+
+
+        //构造父类函数
+        function Operation(_kpi) {
+            this.basic = 0;
+            this.prp = 0;
+            this.kpi = _kpi || 1;
+        }
+
+        //子类
+        function Pm() {
+            this.calc = function() {
+                return this.basic + this.prp * this.kpi;
+            }
+        }
+
+        Pm.prototype = new Operation(); //继承父类函数里的变量
+        var _pm = new Pm(); //实例化，用new调用
+        _pm.basic = 28000;
+        _pm.prp = 18000;
+        _pm.kpi = 1;
+        console.log(_pm.calc());
+
+
+        function Sa() {
+            this.calc = function() {
+                return this.basic + this.prp * (this.kpi < 0.9 ? 0.5 : 1);
+            }
+        }
+        Sa.prototype = new Operation();
+        var _sa = new Sa();
+        _sa.basic = 18000;
+        _sa.prp = 10000;
+        _sa.kpi = 0.8;
+        console.log(_sa.calc());
+
+
+        function Dev(_kpi) {
+            Operation.call(this, _kpi);
+            this.basic = 8000;
+            this.prp = 4000;
+            this.calc = function() {
+                return this.basic + this.prp * (this.kpi < 0.7 ? 0.1 : 1);
+            }
+        }
+        var _dev = new Dev(0.6);
+        console.log(_dev.calc());
+
+        console.log(_dev instanceof Dev);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>oop02</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function Operation() {
+                this.type = '';
+                this.generateHtml = function() {
+                    return '<div></div>'
+                };
+            }
+
+            new Operation();
+
+            function Dategrid() {
+                this.generateHtml = function() {
+                    return '<table></table>'
+                }
+            }
+            Dategrid.prototype = new Operation();
+
+            function Dateform() {
+                this.generateHtml = function() {
+                    return `<form></form>`
+                }
+            }
+            Dateform.prototype = new Operation();
+
+            var obj = new Dategrid();
+
+            //简单工厂模型
+            //利用对象的多态性实现简单工厂模式
+            function Factory(type) {
+                var _operation;
+                switch (type) {
+                    case 'dategrid':
+                        _operation = new Dategrid();
+                        break;
+                    case 'dateform':
+                        _operation = new Dateform();
+                        break;
+                    default:
+                        _operation = new Operation();
+                }
+                return _operation;
+            }
+            var op = Factory();
+            document.body.innerHTML = op.generateHtml();
+
+        })
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
